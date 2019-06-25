@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 heroku = Heroku(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://broxznhmvrkkqc:24d375880b5ae86c3ce30a89a50b34076813f6b78c8ad7a1448b0675c7064a03@ec2-107-20-185-16.compute-1.amazonaws.com:5432/d810s85l0d5u24"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://csoypbfhgfnaxu:665a67ad9f561992cb99494a7cd3402d6bc976e7d24705409d36fb01da0d2c44@ec2-107-20-185-16.compute-1.amazonaws.com:5432/d7q6ld5u1qsim1"
 
 CORS(app)
 
@@ -59,7 +59,7 @@ def add_adopt_item():
     img_url = request.json["img_url"]
     title = request.json["title"]
     description = request.json["description"]
-    record = adopt_item(img_url, title, description)
+    record = adopt_item(img_url, description, title)
     db.session.add(record)
     db.session.commit()
     adopt_new_item = adopt_item.query.get(record.id)
